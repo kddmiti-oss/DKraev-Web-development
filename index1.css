@@ -1,0 +1,227 @@
+/* ===== База ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    background: #fff8f2;
+    line-height: 1.6;
+}
+
+/* ===== Навигация ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFDAB9;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #A52A2A;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar a {
+    color: #A52A2A;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.navbar a:hover {
+    background: rgba(165, 42, 42, 0.1);
+}
+
+/* ===== Сетка статей на главной ===== */
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.article-preview {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.article-preview:hover {
+    transform: translateY(-3px);
+}
+
+.article-preview h2 {
+    margin-top: 0;
+    color: #A52A2A;
+}
+
+.article-preview h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Картинка «обтекается» текстом */
+.article-preview img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 15px 10px 0;
+    border-radius: 8px;
+}
+
+.article-preview::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.article-preview .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #A52A2A;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.article-preview .read-more:hover {
+    text-decoration: underline;
+}
+
+/* ===== Страница регистрации ===== */
+.register-page {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.register-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.register-card h2 {
+    margin-top: 0;
+    color: #A52A2A;
+}
+
+/* ===== Форма ===== */
+form label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    outline: none;
+    border-color: #A52A2A;
+    box-shadow: 0 0 0 2px rgba(165, 42, 42, 0.15);
+}
+
+form fieldset {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+form fieldset legend {
+    color: #A52A2A;
+    padding: 0 5px;
+}
+
+form fieldset label {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+
+form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+form .checkbox input {
+    width: auto;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #A52A2A;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #8B1A1A;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .article-preview img {
+        float: none;
+        width: 100%;
+        height: 180px;
+        margin: 0 0 10px 0;
+    }
+}
