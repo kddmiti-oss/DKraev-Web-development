@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Страница регистрации</title>
+	<link rel="stylesheet" href="index1.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<div class="logo">Здесь написано название сайта</div>
+		<ul>
+			<li><a href="index1.html">На главную</a></li>
+			<li><a href="index2.html">Регистрация</a></li>
+		</ul>
+	</nav>
+	
+	<main class="register-page">
+		<div class="register-card">
+			<h2>Регистрация</h2>
+
+			<form method="get" action="index1.html">
+				<label> Имя пользователя
+					<input type="text" name="username" required minlength="3" placeholder="Ваш логин">
+				</label>
+
+				<label> Email
+					<input type="email" name="email" required placeholder="you@example.com">
+				</label>
+
+				<label> Пароль
+					<input type="password" name="password" required minlength="6" placeholder="Минимум 6 символов">
+				</label>
+
+				<label> Аватар
+					<input type="file" name="avatar" accept="image/*">
+				</label>
+									
+				<fieldset>
+					<legend>Пол</legend>
+					<label><input type="radio" name="gender" value="male" checked> Мужской</label>
+					<label><input type="radio" name="gender" value="female"> Женский</label>
+				</fieldset>
+
+				<label class="checkbox">
+					<input type="checkbox" name="newsletter">
+					Согласен на получение рассылки
+				</label>
+						
+				<button type="submit" class="submit-btn">Зарегистрироваться</button>
+			</form>			
+		</div>
+	</main>
+</body>
+</html>
