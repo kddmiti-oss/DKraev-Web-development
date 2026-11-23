@@ -1,0 +1,29 @@
+<ol id="elem">
+	<li>Привет</li>
+	<li>Мир</li>
+</ol>
+
+ <script>
+	function cler(elem) {
+		const child = Array.from(elem.children);
+		for (let i of child) {
+			i.remove();
+		}
+	};
+	let elem = document.getElementById('elem');
+	cler(elem);
+
+	const ol = document.createElement('ol');
+	ol.id = 'elem';
+	ol.innerHTML = '<li>Привет</li><li>Мир</li>';
+
+	document.body.append(ol);
+
+	function cler2(elem) {
+  		Array.from(elem.children).forEach(i => i.remove());
+	}
+	elem = document.getElementById('elem');
+	cler2(elem);
+
+	
+ </script>

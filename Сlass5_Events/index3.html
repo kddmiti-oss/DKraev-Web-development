@@ -1,0 +1,27 @@
+<html>
+<body>
+	<div>Пользователи:</div>
+	<ul>
+		<li>Джон</li>
+		<li>Пит</li>
+	</ul>
+
+	<script>
+		const div = document.body.children[0];
+		const ul  = document.body.children[1];
+		const li2 = ul.children[1];
+
+		console.log(div.textContent);
+		console.log(ul.tagName);
+		console.log(li2.textContent);
+
+		const div2 = document.body.firstElementChild;
+		console.log(div2.textContent);
+
+		const arrUl = Array.from(ul.children);
+		for(let i of arrUl) {
+			console.log(i.textContent);
+		}
+	</script>
+</body>
+</html>
