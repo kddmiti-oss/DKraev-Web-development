@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Страница регистрации</title>
+	<link rel="stylesheet" href="index1.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<div class="logo">Здесь написано название сайта</div>
+		<ul>
+			<li><a href="index1.html">На главную</a></li>
+			<li><a href="index2.html">Регистрация</a></li>
+		</ul>
+	</nav>
+	
+	<main class="register-page">
+		<div class="register-card">
+			<h2>Регистрация</h2>
+
+			<form id="register-form" method="get" action="index1.html">
+				<label id="label-username"> Имя пользователя
+					<input id="input-username" type="text" name="username" required minlength="3" placeholder="Ваш логин">
+				</label>
+
+				<label id="label-Email"> Email
+					<input id="input-Email" type="email" name="email" required placeholder="you@example.com">
+				</label>
+
+				<label id="label-password"> Пароль
+					<input id="input-password" type="password" name="password" required minlength="8" placeholder="Минимум 8 символов">
+				</label>
+				<ul id="password-errors" class="errors"></ul>
+
+				<label> Аватар
+					<input type="file" name="avatar" accept="image/*">
+				</label>
+									
+				<fieldset>
+					<legend>Пол</legend>
+					<label><input type="radio" name="gender" value="male" checked> Мужской</label>
+					<label><input type="radio" name="gender" value="female"> Женский</label>
+				</fieldset>
+
+				<label class="checkbox">
+					<input type="checkbox" name="newsletter">
+					Согласен на получение рассылки
+				</label>
+						
+				<button type="submit" class="submit-btn">Зарегистрироваться</button>
+			</form>			
+		</div>
+	</main>
+
+	<script>
+		const labelUsername = document.getElementById('label-username');
+		const inputUsername = document.getElementById('input-username');
+		const labelEmail = document.getElementById('label-Email');
+		const inputEmail = document.getElementById('input-Email');
+		const labelPassword = document.getElementById('label-password');
+		const inputPassword = document.getElementById('input-password');
+		const passwordErrorsList = document.getElementById('password-errors');
+		const form = document.getElementById('register-form');
+
+		labelUsername.style.color = '#A52A2A';
+		labelEmail.style.color = '#A52A2A';
+		labelPassword.style.color = '#A52A2A';
+
+		inputUsername.style.backgroundColor = '#f0f8ff';
+		inputEmail.style.backgroundColor = '#f0f8ff';
+		inputPassword.style.backgroundColor = '#f0f8ff';
+
+		function checkPassword(password) {
+			const errors = [];
+			if (password.length < 8) {
+				errors.push("Пароль должен содержать минимум 8 символов");
+			}
+			if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+				errors.push("Пароль должен содержать спец символы");
+			}
+			if (!/\d/.test(password)) {
+				errors.push("Пароль должен содержать цифры");
+			}
+			if (!/[A-Z]/.test(password)) {
+				errors.push("Пароль должен содержать минимум одну заглавную букву");
+			}
+			if (!/[a-z]/.test(password)) {
+				errors.push("Пароль должен содержать минимум одну строчную букву");
+			}
+			return errors;
+		}
+
+		function validPassword() {
+			const password = inputPassword.value; 
+			const countErrors = checkPassword(password);
+			if (countErrors.length != 0) {
+				alert(countErrors);
+			}
+		}
+
+		function renderErrors(errors) {
+			passwordErrorsList.innerHTML = '';
+			if (errors.length === 0) {
+				inputPassword.classList.remove('invalid');
+				inputPassword.classList.add('valid');
+				return;
+			}
+			inputPassword.classList.remove('valid');
+			inputPassword.classList.add('invalid');
+			for (const message of errors) {
+				const li = document.createElement('li');
+				li.textContent = message;
+				passwordErrorsList.append(li);
+			}
+		}
+
+		function validPassword() {
+			const password = inputPassword.value;
+			const errors = checkPassword(password);
+			renderErrors(errors);
+			return errors.length === 0;
+		}
+		
+		inputPassword.addEventListener('change', validPassword);
+
+	</script>
+
+</body>
+</html>
