@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Товары</title>
+	<link rel="stylesheet" href="index1.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<div class="logo">Здесь написано название сайта</div>
+		<ul>
+			<li><a href="index1.html">На главную</a></li>
+			<li><a href="index2.html">Регистрация</a></li>
+		</ul>
+	</nav>
+	
+	<main class="products" id="products">
+        
+    </main>
+
+    <script>
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://localhost:10800/api/products', { method: 'GET' });
+                const products = await response.json();
+                const container = document.getElementById('products');
+
+                console.log(products);
+                
+                for (let i = 0; i < products.length; i++) {
+                    const product = products[i];
+
+                    //Создание карточки товара
+                    const card = document.createElement('article');
+                    card.className = 'product-card';
+
+                    //Нахождение адреса картинки
+                    let mainImageUrl = 'images/placeholder.jpg'; //Затычка если картинка не нашлась
+                    if (product.images && product.images.length > 0) {
+                        let mainImage = product.images[0]; //По умолчанию первая
+
+                        // for (let j = 0; j < product.images.length; j++) {
+                            
+                        // }
+
+                        mainImageUrl = mainImage.imageUrl; //Адрес картинки
+                    }
+
+                    const img = document.createElement('img'); //Картинка
+                    img.src = mainImageUrl;
+                    img.alt = product.name;
+
+                    const title = document.createElement('h3'); //Нзавание карточки товара
+                    title.textContent = product.name;
+
+                    const category = document.createElement('p'); //Категория товара
+                    category.className = 'category';
+                    category.textContent = product.category.name;
+
+                    const price = document.createElement('p'); //Цена товара
+                    price.className = 'price';
+                    price.textContent = product.price.toLocaleString('ru-RU') + ' ₽';
+
+                    const desc = document.createElement('p'); //Описание товара
+                    desc.className = 'desc';
+                    desc.textContent = product.description;
+
+                    card.append(img);
+                    card.append(title);
+                    card.append(category);
+                    card.append(price);
+                    card.append(desc);
+
+                    container.append(card);
+                }
+                
+            } catch(error) {
+                alert(error);
+            }
+        }
+        window.onload = loadProducts;
+    </script>
+
+</body>
+</html>
